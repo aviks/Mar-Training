@@ -103,7 +103,7 @@ nested_powers[2][3]
 #
 
 
-A = [] # Allocate an 8x3 matrix to store the values into
+A = Array{Float64, 2}(undef, 8, 3) # Allocate an 8x3 matrix to store the values into
 for pow in 1:3
     for value in 1:8
         A[value, pow] = value ^ pow
