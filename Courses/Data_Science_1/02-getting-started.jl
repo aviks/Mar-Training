@@ -62,6 +62,7 @@ cor(iris.PetalWidth, iris.PetalLength)
 
 # While we could examine each column separately, a much quicker way to summarize our variables is with the `describe` function:
 
+using DataFrames
 describe(iris)
 
 
@@ -87,14 +88,14 @@ describe(iris)
 
 using StatsBase
 
-y1 = sample(1:20, 20, replace=true)  # replaces units after being selected
-
+# replaces units after being selected
+y1 = sample(1:20, 20, replace=true)
 #-
 
-y2 = sample(1:20, 20, replace=false)  # DOES NOT replace units after being selected
+# DOES NOT replace units after being selected
+y2 = sample(1:20, 20, replace=false)
 
 # Next we'll use the [`countmap`](http://juliastats.github.io/StatsBase.jl/latest/search.html?q=countmap) function to get the count of each unique value in our samples.  Notice that when we do sampling *without* replacement, the values will only appear one time.  When sampling *with* replacement, any given selected item is then placed back into the pool of possible items to select from.
-
 countmap(y1)
 
 #-
