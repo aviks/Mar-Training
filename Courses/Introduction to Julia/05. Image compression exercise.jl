@@ -57,28 +57,8 @@ load("Courses/Introduction to Julia/images/banana_3svals.png")
 
 Gray(-0.5)
 
-function svd_compress(A, nv)
-    F = svd(A)
-    return F.U[:,1:nv] * Diagonal(F.S[1:nv]) * F.Vt[1:nv,:]
-end
-
-ss = load(imgpath)
-
-function compress_image(imgfile, factor)
-    img = load(imgfile)
-    gs = Gray.(img)
-    cv = channelview(gs)
-    F = svd(cv)
-    m, n = size(cv)
-    #m == n || error("image must be square")
-    nv = fld(n, factor)
-    compressed = F.U[:,1:nv] * Diagonal(F.S[1:nv]) * F.Vt[1:nv,:]
-    return Gray.(compressed)
-end
-
 compress_image("Courses/Introduction to Julia/images/banana.jpg",2)
 
-compress_image(imgpath, 5)
 
 # Remember: you can index arrays with `:` and ranges `a:b`:
 
@@ -87,5 +67,3 @@ A = [ i+j for i = 1:10, j = 1:10 ]
 A[2:4, :]
 A[1:2, 1:2]
 A[:, 4:5]
-
-svd
